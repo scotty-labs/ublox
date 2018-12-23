@@ -49,6 +49,8 @@ QVariantMap createProps_dgnssMode()
     auto props =
         cc::property::field::ForField<Field>()
             .name("dngssMode")
+            .add("Unknown 1")
+            .add("Unknown 2")
             .add("RTK float")
             .add("RTK fixed")
         ;

@@ -1,0 +1,15 @@
+Build:
+mkdir ccublox
+cd ccublox
+git clone https://github.com/scotty-labs/comms_champion
+git clone https://github.com/scotty-labs/ublox
+mkdir build
+cd build
+cmake -DCC_NO_UNIT_TESTS=ON -DCC_NO_WARN_AS_ERR=ON -DCC_ENABLE_DEMO_PROTOCOL=ON -DCC_QT_DIR=/opt/scotty/vendor/qt5 ../comms_champion/
+LD_LIBRARY_PATH=/opt/scotty/vendor/qt5/lib:$LD_LIBRARY_PATH make -j22 install
+rm CMakeCache.txt
+cmake -DCC_UBLOX_PLUGIN_ALL=ON -DCC_UBLOX_NO_WARN_AS_ERR=ON -DCC_UBLOX_QT_DIR=/opt/scotty/vendor/qt5 -DCC_MAIN_INSTALL_DIR=$PWD -DCC_UBLOX_FULL_SOLUTION=ON ../ublox/
+LD_LIBRARY_PATH=/opt/scotty/vendor/qt5/lib:$LD_LIBRARY_PATH make -j22 install
+
+Run:
+QT_PLUGIN_PATH=/opt/scotty/vendor/qt5/plugins LD_LIBRARY_PATH=/opt/scotty/vendor/qt5/lib/:$PWD/install/lib/:$LD_LIBRARY_PATH $PWD/install/bin/cc_view

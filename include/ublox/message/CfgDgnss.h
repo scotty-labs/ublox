@@ -36,6 +36,8 @@ struct CfgDgnssFields
     /// @brief Value enumeration for @ref dgnssMode field.
     enum class DgnssMode : std::uint8_t
     {
+        unk1, ///< Unknown
+        unk2, ///< Unknown
         RtkFloat, ///< No attempts are made to fix ambiguities.
         RtkFixed, ///< Ambiguities are fixed whenever possible.
         NumOfValues /// number of available values
